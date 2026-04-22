@@ -14,12 +14,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # 这里改成 20
+          node-version: '20'
 
       - name: Install dependencies
         run: |
           cd watermark-camera
-          npm install
+          npm cache clean --force
+          npm install --legacy-peer-deps  # 加上这个参数
 
       - name: Setup Java
         uses: actions/setup-java@v4
